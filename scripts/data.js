@@ -57,3 +57,35 @@ const experiencesData = [
 
 
 window.experiencesData = experiencesData;
+
+
+const technologiesData = [
+    { name: "PyTorch", domain: "AI/ML" },
+    { name: "Scikit-learn", domain: "AI/ML" },
+    { name: "OpenCV", domain: "AI/ML" },
+    { name: "NumPy", domain: "AI/ML" },
+    { name: "Pandas", domain: "AI/ML" },
+    { name: "TensorFlow", domain: "AI/ML" },
+    { name: "Keras", domain: "AI/ML" },
+    { name: "Transformers (Hugging Face)", domain: "AI/ML" },
+    { name: "Python", domain: "Data Science" },
+    { name: "SQL", domain: "Data Science" },
+    { name: "R", domain: "Data Science" },
+    { name: "Matplotlib", domain: "Data Science" },
+    { name: "Seaborn", domain: "Data Science" },
+    { name: "Plotly", domain: "Data Science" },
+    { name: "SciPy", domain: "Data Science" },
+    { name: "JavaScript", domain: "Full Stack Development" },
+    { name: "TypeScript", domain: "Full Stack Development" },
+    { name: "Node.js", domain: "Full Stack Development" },
+    { name: "Nest.js", domain: "Full Stack Development" },
+    { name: "Vue.js", domain: "Full Stack Development" },
+    { name: "Tailwind CSS", domain: "Full Stack Development" },
+    { name: "PostgreSQL", domain: "Database" },
+    { name: "MySQL", domain: "Database" },
+    { name: "Prisma (ORM)", domain: "Database" },
+    { name: "Sequelize (ORM)", domain: "Database" }
+];
+
+
+window.technologiesData = technologiesData;

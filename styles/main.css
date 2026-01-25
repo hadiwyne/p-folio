@@ -608,6 +608,90 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0;
 }
 
+/* Technologies Section */
+.technologies-section {
+    padding: 2rem 0;
+    background-color: var(--bg-sage);
+}
+
+.technology-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.technologies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.technology-card {
+    flex: 0 1 380px;
+    max-width: 100%;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-medium);
+    padding: 2.5rem;
+    transition: var(--transition-slow);
+    opacity: 0;
+    transform: translateY(20px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.technology-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.02) 100%);
+    opacity: 0;
+    transition: var(--transition-normal);
+    pointer-events: none;
+}
+
+.technology-card:hover::before {
+    opacity: 1;
+}
+
+.technology-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-light);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .technology-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.technology-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.technology-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.technology-domain {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
 /* Projects Section */
 .projects-section {
     padding: 2rem 0;
@@ -1049,6 +1133,15 @@ h1, h2, h3, h4, h5, h6 {
     .experience-item:nth-child(odd):hover .experience-content,
     .experience-item:nth-child(even):hover .experience-content {
         transform: translateX(0) translateY(-4px);
+    }
+    
+    .technologies-grid {
+        gap: 1.5rem;
+    }
+    
+    .technology-card {
+        flex: 0 1 100%;
+        padding: 2rem;
     }
     
     .brand-logos {

@@ -21,6 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Render experiences
     renderExperiences();
     
+    // Render technologies
+    renderTechnologies('AI/ML');
+    renderTechnologyFilters();
+    
     // Initialize scroll animations
     initScrollAnimations();
 });
@@ -134,6 +138,77 @@ function createExperienceItem(experience) {
     `;
     
     return item;
+}
+
+// Render Technologies
+function renderTechnologies(filterDomain = 'AI/ML') {
+    const technologiesGrid = document.getElementById('technologies-grid');
+    
+    if (!technologiesGrid || !window.technologiesData) {
+        console.error('Technologies grid or data not found');
+        return;
+    }
+    
+    technologiesGrid.innerHTML = '';
+    
+    const filteredTechnologies = window.technologiesData.filter(tech => tech.domain === filterDomain);
+    
+    filteredTechnologies.forEach(tech => {
+        const techCard = createTechnologyCard(tech);
+        technologiesGrid.appendChild(techCard);
+    });
+    
+    setTimeout(() => {
+        initScrollAnimations();
+    }, 100);
+}
+
+function createTechnologyCard(tech) {
+    const card = document.createElement('div');
+    card.className = 'technology-card';
+    
+    card.innerHTML = `
+        <div class="technology-name">${tech.name}</div>
+        <div class="technology-domain">${tech.domain}</div>
+    `;
+    
+    return card;
+}
+
+// Technology Filter Buttons
+function renderTechnologyFilters() {
+    const filtersContainer = document.getElementById('technology-filters');
+    
+    if (!filtersContainer || !window.technologiesData) {
+        return;
+    }
+    
+    const domains = [...new Set(window.technologiesData.map(t => t.domain))];
+    
+    filtersContainer.innerHTML = '';
+    
+    domains.forEach(domain => {
+        const filterBtn = document.createElement('button');
+        filterBtn.className = 'filter-btn';
+        filterBtn.setAttribute('data-filter', domain);
+        filterBtn.textContent = domain;
+        if (domain === 'AI/ML') {
+            filterBtn.classList.add('active');
+        }
+        
+        filtersContainer.appendChild(filterBtn);
+    });
+    
+    const filterButtons = filtersContainer.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filterDomain = this.getAttribute('data-filter');
+            renderTechnologies(filterDomain);
+        });
+    });
 }
 
 // Render Projects
@@ -251,6 +326,11 @@ function initScrollAnimations() {
     const experienceItems = document.querySelectorAll('.experience-item:not(.fade-in)');
     experienceItems.forEach(item => {
         observer.observe(item);
+    });
+    
+    const technologyCards = document.querySelectorAll('.technology-card:not(.fade-in)');
+    technologyCards.forEach(card => {
+        observer.observe(card);
     });
 }
 
