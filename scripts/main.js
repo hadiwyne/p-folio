@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize scroll animations
     initScrollAnimations();
+    
+    // Initialize hero background fade
+    initHeroBackgroundFade();
 });
 
 // Theme Toggle
@@ -332,6 +335,50 @@ function initScrollAnimations() {
     technologyCards.forEach(card => {
         observer.observe(card);
     });
+}
+
+// Hero Background Fade on Scroll
+function initHeroBackgroundFade() {
+    const heroSection = document.querySelector('.hero-section');
+    
+    if (!heroSection) {
+        return;
+    }
+    
+    let ticking = false;
+    
+    function updateHeroBackground() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const heroHeight = heroSection.offsetHeight;
+        const fadeStart = heroHeight * 0.3; // Start fading at 30% of hero height
+        const fadeEnd = heroHeight * 0.7; // Fully faded at 70% of hero height
+        
+        if (scrollY > fadeStart) {
+            const fadeProgress = Math.min((scrollY - fadeStart) / (fadeEnd - fadeStart), 1);
+            heroSection.style.setProperty('--hero-opacity', 1 - fadeProgress);
+            
+            if (fadeProgress > 0.1) {
+                heroSection.classList.add('fade-background');
+            } else {
+                heroSection.classList.remove('fade-background');
+            }
+        } else {
+            heroSection.style.setProperty('--hero-opacity', 1);
+            heroSection.classList.remove('fade-background');
+        }
+        
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHeroBackground);
+            ticking = true;
+        }
+    });
+    
+    // Initial call
+    updateHeroBackground();
 }
 
 // Window resize for mobile menu
