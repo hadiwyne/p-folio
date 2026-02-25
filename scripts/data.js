@@ -43,6 +43,11 @@ window.projectsData = projectsData;
 
 const experiencesData = [
     {
+        period: "Feb 2026 - Present",
+        company: "ProvoxGlobal, Islamabad",
+        designation: "Database Migration Specialist"
+    },
+    {
         period: "July 2025 - December 2025",
         company: "Cowlar Design Studio, Islamabad",
         designation: "Polyglot Software Engineer"
