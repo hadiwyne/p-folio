@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-.hero-section::before {
+/* .hero-section::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -141,7 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-section.fade-background::before,
 .hero-section.fade-background::after {
     opacity: 0;
-}
+} */
 
 .hero-container {
     position: relative;
