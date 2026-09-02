@@ -50,7 +50,7 @@ const experiencesData = [
     {
         period: "July 2025 - December 2025",
         company: "Cowlar Design Studio, Islamabad",
-        designation: "Polyglot Software Engineer"
+        designation: "Business Development Associate"
     },
     {
         period: "March 2025 - May 2025",
