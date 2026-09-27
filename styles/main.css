@@ -345,25 +345,44 @@ h1, h2, h3, h4, h5, h6 {
 /* Hamburger Menu */
 .hamburger {
     display: none;
-    flex-direction: column;
-    gap: 5px;
+    justify-content: center;
+    align-items: center;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
     z-index: 1001;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    padding: 0;
 }
 
 .hamburger span {
+    position: absolute;
     width: 24px;
     height: 2px;
     background-color: var(--text-primary);
     transition: var(--transition-normal);
     display: block;
+    top: 50%;
+    left: 50%;
+    margin-left: -12px;
+}
+
+.hamburger span:nth-child(1) {
+    transform: translateY(-7px);
+}
+
+.hamburger span:nth-child(2) {
+    transform: translateY(0);
+}
+
+.hamburger span:nth-child(3) {
+    transform: translateY(7px);
 }
 
 .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
+    transform: rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -371,7 +390,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
+    transform: rotate(-45deg);
 }
 
 /* ===== SECTION STYLES  ===== */
@@ -1086,15 +1105,6 @@ h1, h2, h3, h4, h5, h6 {
 
     #darkmode-toggle:checked + .theme-toggle:after {
         left: 23px;
-    }
-
-    .hamburger {
-        display: flex;
-        padding: 0.25rem;
-    }
-
-    .hamburger span {
-        width: 22px;
     }
 
     .hero-section {
